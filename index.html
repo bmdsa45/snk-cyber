@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- Meta tag para optimización en Brave -->
+    <meta name="brave-crypto-wallet" content="enabled">
+    <title>Snake Cyberpunk 2.0</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00ff9d;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .game-container {
+            position: relative;
+            margin: 20px;
+        }
+        
+        canvas {
+            border: 2px solid #00ff9d;
+            box-shadow: 0 0 20px #00ff9d;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        button {
+            background: #000;
+            color: #00ff9d;
+            border: 2px solid #00ff9d;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: #00ff9d;
+            color: #000;
+            box-shadow: 0 0 15px #00ff9d;
+        }
+        
+        #game-over {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
+            border: 2px solid #ff0066;
+            box-shadow: 0 0 30px #ff0066;
+            text-align: center;
+            z-index: 1000;
+        }
+        
+        .score-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.2em;
+            text-shadow: 0 0 10px #00ff9d;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="game-canvas" width="600" height="600"></canvas>
+        <div class="score-container">
+            <div id="score">Puntuación: 0</div>
+            <div id="level">Nivel: 1</div>
+        </div>
+        <div id="game-over">
+            <h2>Game Over</h2>
+            <p>Puntuación Final: <span id="final-score">0</span></p>
+            <button id="restart-btn">Jugar de Nuevo</button>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button id="start-btn">Iniciar</button>
+        <button id="auto-play-btn">Auto Play</button>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

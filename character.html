@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personaje 3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0f1c 0%, #1c1c3d 100%);
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Configuración básica
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Crear el personaje
+        const geometry = new THREE.BoxGeometry(1, 2, 1); // Cuerpo
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff9d });
+        const character = new THREE.Mesh(geometry, material);
+        scene.add(character);
+
+        // Posición de la cámara
+        camera.position.z = 5;
+
+        // Animación
+        function animate() {
+            requestAnimationFrame(animate);
+            character.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
